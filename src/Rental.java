@@ -16,33 +16,13 @@ public class Rental {
         return _movie;
     }
 
+    // AGORA APENAS DELEGA PARA MOVIE (Commit 9)
     public double getCharge() {
-        double result = 0;
-
-        switch (this.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                result = 2;
-                if (this.getDaysRented() > 2)
-                    result += (this.getDaysRented() - 2) * 1.5;
-                break;
-
-            case Movie.NEW_RELEASE:
-                result = this.getDaysRented() * 3;
-                break;
-
-            case Movie.CHILDRENS:
-                result = 1.5;
-                if (this.getDaysRented() > 3)
-                    result += (this.getDaysRented() - 3) * 1.5;
-                break;
-        }
-
-        return result;
+        return _movie.getCharge(_daysRented);
     }
 
     public int getFrequentRenterPoints() {
-        if (getMovie().getPriceCode() == Movie.NEW_RELEASE &&
-                getDaysRented() > 1) {
+        if (_movie.getPriceCode() == Movie.NEW_RELEASE && _daysRented > 1) {
             return 2;
         }
         return 1;
