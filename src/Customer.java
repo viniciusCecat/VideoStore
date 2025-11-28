@@ -25,8 +25,6 @@ public class Customer {
 
         for (Rental each : _rentals) {
 
-            double thisAmount = each.getCharge();
-
             frequentRenterPoints++;
 
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1) {
@@ -34,9 +32,9 @@ public class Customer {
             }
 
             result.append("\t").append(each.getMovie().getTitle()).append("\t")
-                    .append(thisAmount).append("\n");
+                    .append(each.getCharge()).append("\n");
 
-            totalAmount += thisAmount;
+            totalAmount += each.getCharge();
         }
 
         result.append("Amount owed is ").append(totalAmount).append("\n");
@@ -44,4 +42,5 @@ public class Customer {
 
         return result.toString();
     }
+
 }

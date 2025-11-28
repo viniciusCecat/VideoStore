@@ -16,7 +16,6 @@ public class Rental {
         return _movie;
     }
 
-    // NOVO MÉTODO (Commit 4)
     public double getCharge() {
         double result = 0;
 
