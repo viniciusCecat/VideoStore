@@ -25,11 +25,8 @@ public class Customer {
 
         for (Rental each : _rentals) {
 
-            frequentRenterPoints++;
-
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1) {
-                frequentRenterPoints++;
-            }
+            // agora não existe mais thisAmount nem cálculo manual de pontos
+            frequentRenterPoints += each.getFrequentRenterPoints();
 
             result.append("\t").append(each.getMovie().getTitle()).append("\t")
                     .append(each.getCharge()).append("\n");
@@ -42,5 +39,4 @@ public class Customer {
 
         return result.toString();
     }
-
 }
