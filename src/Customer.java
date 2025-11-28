@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Vector;
 
 public class Customer {
     private String _name;
@@ -34,7 +36,6 @@ public class Customer {
         return result.toString();
     }
 
-    // NOVA FEATURE — Commit 8
     public String htmlStatement() {
         StringBuilder result = new StringBuilder(
                 "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n"
@@ -58,7 +59,12 @@ public class Customer {
         return result.toString();
     }
 
-    private double getTotalCharge() {
+    public Enumeration getRentals() {
+
+        return new Vector<>(_rentals).elements();
+    }
+
+    public double getTotalCharge() {
         double result = 0;
         for (Rental each : _rentals) {
             result += each.getCharge();
@@ -66,7 +72,7 @@ public class Customer {
         return result;
     }
 
-    private int getTotalFrequentRenterPoints() {
+    public int getTotalFrequentRenterPoints() {
         int result = 0;
         for (Rental each : _rentals) {
             result += each.getFrequentRenterPoints();
